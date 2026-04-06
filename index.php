@@ -2,9 +2,9 @@
 session_start();
 header('Content-Type: text/html; charset=UTF-8');
 
-// Подключение к БД для получения списка языков
+
 $user = 'u82257';
-$pass = '2312202';  // ЗАМЕНИ НА СВОЙ ПАРОЛЬ!
+$pass = '2312202';
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=$user;charset=utf8mb4", $user, $pass, [
@@ -12,7 +12,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
     
-    // Получаем список языков из БД
+
     $languages = $pdo->query("SELECT id, name FROM programming_languages ORDER BY name")->fetchAll();
 } catch (PDOException $e) {
     die("Ошибка подключения к БД: " . $e->getMessage());
@@ -34,7 +34,6 @@ try {
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
